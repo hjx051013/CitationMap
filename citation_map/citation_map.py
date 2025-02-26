@@ -149,6 +149,8 @@ def affiliation_text_to_geocode(author_paper_affiliation_tuple_list: List[Tuple[
                                  desc='Finding geographic coordinates from %d unique citing affiliations in %d entries' % (
                                      len(affiliation_map), len(author_paper_affiliation_tuple_list)),
                                  total=len(affiliation_map)):
+        if "university" not in affiliation_name.lower():
+            continue
         if affiliation_name == NO_AUTHOR_FOUND_STR:
             corresponding_entries = affiliation_map[affiliation_name]
             for entry_idx in corresponding_entries:
